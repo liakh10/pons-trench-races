@@ -38,7 +38,7 @@ body.open .snd{opacity:1;transform:none}
 .snd i svg{width:18px;height:18px}
 .snd i::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--mint);animation:ping 1.7s ease-out infinite}
 @keyframes ping{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.6);opacity:0}}
-.snd small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;color:var(--mint-2);margin-top:3px}
+.snd small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;color:var(--mint-2);margin-top:3px;white-space:nowrap}
 .snd:hover{transform:translateY(-2px)}
 
 /* ---------- HUD ---------- */
@@ -172,8 +172,8 @@ body.racing.coarse .touch{display:flex}
   .board .sign b{width:100%;font-size:clamp(9px,2.75vw,13px);letter-spacing:0}
   .board .sign .copy{width:100%;text-align:center}
   .board .post{display:none}
-  .sel .top{top:calc(var(--pad) + 66px)}
-  .snd{top:calc(var(--pad) + 52px);padding:8px 16px 8px 9px;font-size:12px}
+  .sel .top{top:calc(var(--pad) + 118px)}
+  .snd{top:calc(var(--pad) + 54px);padding:8px 16px 8px 9px;font-size:12px}
   .sel .pick{bottom:calc(var(--pad) + 196px);gap:8px}
   .sel .quote{font-size:11px;max-width:34ch}
   .sel .hint{display:none}
@@ -261,7 +261,7 @@ One track that does not know who they are</p>
   <button class="key n" id="lbn">&#8250;</button>
 </div>
 
-<button class="snd" id="sndPrompt"><i><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg></i><span>SOUND ON<small>The grid is quiet until you tap</small></span></button>
+<button class="snd" id="sndPrompt"><i><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg></i><span>SOUND ON<small>Quiet until you tap</small></span></button>
 
 <audio id="bgm" src="assets/music.mp3" loop preload="none"></audio>
 
