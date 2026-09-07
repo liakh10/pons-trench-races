@@ -1,6 +1,6 @@
 /* ================= CONFIG: единственное место, где меняются данные ================= */
 window.SITE = {
-  CA:      "SOON",                       /* строго "SOON" до лаунча, потом 0x… (42 символа) */
+  CA:      "0xcB2168976218E9A3C742E17A928a2954bF7133e8",                       /* строго "SOON" до лаунча, потом 0x… (42 символа) */
   X_URL:   "https://x.com/ponstrenchraces",
   NAME:    "Pons Trench Races",
   TICKER:  "$PTR",
