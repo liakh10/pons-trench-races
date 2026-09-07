@@ -8,7 +8,7 @@
     X_URL:   "https://x.com/ponstrenchraces",
     NAME:    "Pons Trench Races",
     TICKER:  "$PTR",
-    TAGLINE: "four guys who never lost at anything. one track that does not know who they are."
+    TAGLINE: "Four guys who never lost at anything\nOne track that does not know who they are"
   };
   window.PONS_HOME = "https://www.ponsfamily.com/launchpad";
   window.DEX_HOME  = "https://dexscreener.com/robinhood";
@@ -16,7 +16,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>$PTR</title>
-<meta name="description" content="four guys who never lost at anything. one track that does not know who they are." />
+<meta name="description" content="Four guys who never lost at anything, one track that does not know who they are" />
 <link rel="icon" type="image/png" href="assets/favicon.png" />
 <link rel="apple-touch-icon" href="assets/apple-icon.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,16 +39,16 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 #gl{position:fixed;inset:0;z-index:0;width:100%;height:100%}
 
 /* ---------- gate ---------- */
-#gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;overflow:hidden;background:var(--fog);transition:opacity .9s,visibility .9s}
+#gate{position:fixed;inset:0;z-index:100;overflow:hidden;background:#0d1117;transition:opacity .9s,visibility .9s}
 #gate.gone{opacity:0;visibility:hidden;pointer-events:none}
-#gate .bg{position:absolute;inset:-4%;background:url(assets/bg-track.webp) center/cover;filter:blur(12px) saturate(1.1);transform:scale(1.04)}
-#gate .card{position:relative;display:grid;justify-items:center;gap:18px;padding:34px 30px 30px;background:rgba(255,255,255,.72);
-  border:1px solid rgba(255,255,255,.9);box-shadow:0 30px 70px rgba(26,34,48,.18),inset 0 1px 0 #fff;backdrop-filter:blur(10px);border-radius:26px;width:min(420px,92vw)}
-#gate .card img{width:112px;height:112px;border-radius:50%;box-shadow:0 12px 30px rgba(26,34,48,.25),0 0 0 6px #fff}
-#gate h1{font-family:var(--disp);font-weight:700;font-size:clamp(28px,4vw,40px);line-height:1;text-align:center;color:var(--slate)}
-#gate h1 span{display:block;font-size:.5em;color:var(--mint-3);letter-spacing:.14em;margin-top:6px}
-#gate p{font-size:12px;line-height:1.6;color:var(--smoke);text-align:center;max-width:32ch}
-#gate .go{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.22em;padding:16px 34px;border-radius:999px;color:var(--slate);
+#gate video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+#gate .grade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,23,.15),rgba(13,17,23,0) 40%,rgba(13,17,23,.78))}
+#gate .card{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(var(--pad) + 10px);display:grid;justify-items:start;gap:14px;color:#fff}
+#gate .kick{font-size:11px;letter-spacing:.34em;color:var(--mint-2)}
+#gate h1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,7vw,96px);line-height:.92;letter-spacing:-.01em;color:#fff;text-shadow:0 4px 0 rgba(0,0,0,.25),0 20px 50px rgba(0,0,0,.4)}
+#gate h1 em{font-style:normal;color:var(--mint-2)}
+#gate p{font-size:clamp(12px,1.3vw,15px);line-height:1.55;color:rgba(255,255,255,.85);white-space:pre-line}
+#gate .go{margin-top:6px;font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.22em;padding:16px 34px;border-radius:999px;color:var(--slate);
   background:linear-gradient(110deg,var(--mint-2),#fff,var(--pink),#fff,var(--mint-2));background-size:400% 100%;animation:rb 5s linear infinite;
   box-shadow:0 10px 24px rgba(56,224,168,.35);transition:transform .16s}
 #gate .go:hover{transform:translateY(-2px) scale(1.02)}
@@ -103,7 +103,7 @@ body.selecting .sel{display:block}
 .sel .mark{font-family:var(--disp);font-weight:700;font-size:clamp(40px,7.4vw,104px);line-height:.92;letter-spacing:-.01em;margin-top:8px;color:var(--slate);
   text-shadow:0 2px 0 #fff,0 4px 0 #fff,0 14px 30px rgba(26,34,48,.18)}
 .sel .mark em{font-style:normal;color:var(--mint-3)}
-.sel .tag{margin:12px auto 0;font-size:clamp(12px,1.3vw,14px);line-height:1.6;color:var(--smoke);max-width:46ch;background:rgba(255,255,255,.6);padding:6px 12px;border-radius:10px;display:inline-block}
+.sel .tag{margin:12px auto 0;font-size:clamp(12px,1.3vw,14px);line-height:1.6;color:var(--smoke);max-width:46ch;background:rgba(255,255,255,.6);padding:6px 12px;border-radius:10px;display:inline-block;white-space:pre-line;text-align:center}
 .sel .pick{position:absolute;left:50%;bottom:calc(var(--pad) + 86px);translate:-50% 0;display:grid;justify-items:center;gap:10px;pointer-events:auto;width:min(560px,92vw)}
 .sel .who{display:flex;align-items:center;gap:14px}
 .sel .who button{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.9);font-size:24px;line-height:1;box-shadow:0 8px 20px rgba(26,34,48,.16);font-family:var(--disp);font-weight:700}
@@ -216,7 +216,6 @@ body.racing.coarse .touch{display:flex}
 <nav class="hud rail">
   <a class="key buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>BUY</a>
   <a class="key" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
-  <a class="key" data-link="dex" href="https://dexscreener.com/robinhood"><svg><use href="#i-dex"/></svg>CHART</a>
 </nav>
 
 <div class="hud corner">
@@ -234,7 +233,8 @@ body.racing.coarse .touch{display:flex}
   <div class="top">
     <div class="kick">GRID · PICK A DRIVER</div>
     <h1 class="mark">PONS TRENCH <em>RACES</em></h1>
-    <p class="tag" data-tagline>four guys who never lost at anything. one track that does not know who they are.</p>
+    <p class="tag" data-tagline>Four guys who never lost at anything
+One track that does not know who they are</p>
   </div>
   <div class="pick">
     <div class="who"><button id="prev" aria-label="previous">&#8249;</button><div class="name" id="selName">TRUMP<i id="selTeam">ORANGE</i></div><button id="next" aria-label="next">&#8250;</button></div>
@@ -260,8 +260,7 @@ body.racing.coarse .touch{display:flex}
 
 <!-- memes -->
 <section class="pop" id="popMemes">
-  <header><span>PIT WALL<small>REPLAYS AND INCIDENTS</small></span><button data-close aria-label="close">x</button></header>
-  <div class="tv"><video id="tvv" src="assets/clip-race.mp4" poster="assets/clip-race.jpg" muted loop playsinline preload="metadata"></video><div class="crt"></div><div class="tag"><s></s>REPLAY · CH 01</div></div>
+  <header><span>PIT WALL<small>INCIDENTS</small></span><button data-close aria-label="close">x</button></header>
   <div class="grid" id="grid"></div>
 </section>
 
@@ -274,11 +273,13 @@ body.racing.coarse .touch{display:flex}
 </div>
 
 <div id="gate">
-  <div class="bg"></div>
+  <video src="assets/clip-race.mp4" poster="assets/clip-race.jpg" autoplay muted loop playsinline></video>
+  <div class="grade"></div>
   <div class="card">
-    <img src="assets/avatar.webp" alt="" />
-    <h1>PONS TRENCH RACES<span>$PTR · ROBINHOOD CHAIN</span></h1>
-    <p>the grid is full. the egos are fuller. sound starts when you enter.</p>
+    <div class="kick">$PTR · ROBINHOOD CHAIN</div>
+    <h1>PONS TRENCH <em>RACES</em></h1>
+    <p data-tagline>Four guys who never lost at anything
+One track that does not know who they are</p>
     <button class="go" id="enter">CLICK TO ENTER</button>
   </div>
 </div>
@@ -317,13 +318,13 @@ body.racing.coarse .touch{display:flex}
   }
 
   var shots = [
-    ['assets/m4-grid.webp','five red lights. four egos. one line.'],
-    ['assets/m5-night.webp','it rained. nobody lifted.'],
-    ['assets/m3-spinout.webp','he was in the wall before the wall was there.'],
-    ['assets/m2-pitstop.webp','the pit crew is fast. the milkshake is faster.'],
-    ['assets/m1-podium.webp','first place got a letter instead of a trophy. he kept it.'],
-    ['assets/m6-monument.webp','they built the trophy before the race. now nobody wants to lose it.'],
-    ['assets/avatar.webp','lap one. everybody is still friends.']
+    ['assets/m4-grid.webp','Five red lights, four egos, one line'],
+    ['assets/m5-night.webp','It rained, nobody lifted'],
+    ['assets/m3-spinout.webp','He was in the wall before the wall was there'],
+    ['assets/m2-pitstop.webp','The pit crew is fast, the milkshake is faster'],
+    ['assets/m1-podium.webp','First place got a letter instead of a trophy, he kept it'],
+    ['assets/m6-monument.webp','They built the trophy before the race, now nobody wants to lose it'],
+    ['assets/avatar.webp','Lap one, everybody is still friends']
   ];
   var grid = document.getElementById('grid'), lb = document.getElementById('lb'),
       lbimg = document.getElementById('lbimg'), lbcap = document.getElementById('lbcap'), at = 0;
@@ -338,9 +339,9 @@ body.racing.coarse .touch{display:flex}
   document.getElementById('lbn').addEventListener('click', function(){ show(at+1); });
   lb.addEventListener('click', function(e){ if(e.target === lb || (e.target.className||'') === 'frame') hide(); });
 
-  var pop = document.getElementById('popMemes'), tvv = document.getElementById('tvv');
-  function openPop(){ pop.classList.add('on'); tvv.play().catch(function(){}); }
-  function closePop(){ pop.classList.remove('on'); tvv.pause(); }
+  var pop = document.getElementById('popMemes');
+  function openPop(){ pop.classList.add('on'); }
+  function closePop(){ pop.classList.remove('on'); }
   document.getElementById('memesBtn').addEventListener('click', openPop);
   document.getElementById('resMemes').addEventListener('click', openPop);
   document.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click', closePop); });
@@ -362,14 +363,14 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
 
 /* ================= drivers ================= */
 const DRIVERS = [
-  { id:'trump',   name:'TRUMP',   team:'ORANGE',  color:0xff8a2b, skin:0xf0b07a, hair:0xf6d35a, style:'swoop',  brow:'squint', mouth:'smug',  skill:.97, quote:'i have the best kart. everybody says so. the kart says so.' },
-  { id:'musk',    name:'MUSK',    team:'MINT',    color:0xa9f7dd, skin:0xf3c9a6, hair:0x5a3a22, style:'tuft',   brow:'wink',   mouth:'smirk', skill:.99, quote:'i rewrote the brakes last night. they are optional now.' },
-  { id:'cz',      name:'CZ',      team:'BLUE',    color:0x3d8cff, skin:0xefc59c, hair:0x151515, style:'buzz',   brow:'calm',   mouth:'smile', skill:.95, glasses:true, quote:'funds are safu. the tires, less so.' },
-  { id:'tenev',   name:'TENEV',   team:'PINK',    color:0xff7ad9, skin:0xf1c6a2, hair:0x1c1a1a, style:'long',   brow:'calm',   mouth:'smile', skill:.96, quote:'trading is temporarily paused. racing is not.' },
-  { id:'toly',    name:'TOLY',    team:'VIOLET',  color:0x9b7bff, skin:0xe9bfa0, hair:0x2a2320, style:'short',  brow:'squint', mouth:'flat',  skill:.98, quote:'the track is fast. the track is also sometimes down.' },
-  { id:'vitalik', name:'VITALIK', team:'ICE',     color:0xbfd8ff, skin:0xf5d5c0, hair:0xd9c27a, style:'thin',   brow:'calm',   mouth:'flat',  skill:.94, quote:'i drive at a constant rate. it is called proof of stake.' },
-  { id:'saylor',  name:'SAYLOR',  team:'AMBER',   color:0xffb703, skin:0xf0c4a4, hair:0x9aa0a6, style:'side',   brow:'squint', mouth:'flat',  skill:.96, quote:'i am not selling this kart. ever. at any price.' },
-  { id:'cupsey',  name:'CUPSEY',  team:'SPONGE',  color:0xfff176, skin:0xfff176, hair:0x000000, style:'sponge', brow:'wink',   mouth:'smile', skill:.98, quote:'i am a sponge. i absorb the corners.' }
+  { id:'trump',   name:'TRUMP',   team:'ORANGE',  color:0xff8a2b, skin:0xf0b07a, hair:0xf6d35a, style:'swoop',  brow:'squint', mouth:'smug',  skill:.97, quote:'I have the best kart, everybody says so' },
+  { id:'musk',    name:'MUSK',    team:'MINT',    color:0xa9f7dd, skin:0xf3c9a6, hair:0x5a3a22, style:'tuft',   brow:'wink',   mouth:'smirk', skill:.99, quote:'I rewrote the brakes last night, they are optional now' },
+  { id:'cz',      name:'CZ',      team:'BLUE',    color:0x3d8cff, skin:0xefc59c, hair:0x151515, style:'buzz',   brow:'calm',   mouth:'smile', skill:.95, glasses:true, quote:'Funds are safu, the tires less so' },
+  { id:'tenev',   name:'TENEV',   team:'PINK',    color:0xff7ad9, skin:0xf1c6a2, hair:0x1c1a1a, style:'long',   brow:'calm',   mouth:'smile', skill:.96, quote:'Trading is paused, racing is not' },
+  { id:'toly',    name:'TOLY',    team:'VIOLET',  color:0x9b7bff, skin:0xe9bfa0, hair:0x2a2320, style:'short',  brow:'squint', mouth:'flat',  skill:.98, quote:'The track is fast, sometimes the track is down' },
+  { id:'vitalik', name:'VITALIK', team:'ICE',     color:0xbfd8ff, skin:0xf5d5c0, hair:0xd9c27a, style:'thin',   brow:'calm',   mouth:'flat',  skill:.94, quote:'I drive at a constant rate, it is called proof of stake' },
+  { id:'saylor',  name:'SAYLOR',  team:'AMBER',   color:0xffb703, skin:0xf0c4a4, hair:0x9aa0a6, style:'side',   brow:'squint', mouth:'flat',  skill:.96, quote:'Not selling this kart, ever, at any price' },
+  { id:'cupsey',  name:'CUPSEY',  team:'SPONGE',  color:0xfff176, skin:0xfff176, hair:0x000000, style:'sponge', brow:'wink',   mouth:'smile', skill:.98, quote:'I am a sponge, I absorb the corners' }
 ];
 const LAPS = 3, HALF = 7, WALL = 8.6, MAXV = 40;
 const coarse = matchMedia('(pointer:coarse)').matches;
@@ -678,15 +679,15 @@ const sfx = (() => {
   let ctx, master, eng, eng2, gain, filt, on = true, ready = false;
   const bgm = document.getElementById('bgm'); let hasMusic = true; bgm.addEventListener('error', () => { hasMusic = false; });
   function init(){ if(ready) return; ready = true; const AC = window.AudioContext || window.webkitAudioContext; if(!AC) return; ctx = new AC(); master = ctx.createGain(); master.gain.value = on ? 1 : 0; master.connect(ctx.destination);
-    filt = ctx.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 500; gain = ctx.createGain(); gain.gain.value = 0; gain.connect(filt); filt.connect(master);
-    eng = ctx.createOscillator(); eng.type = 'sawtooth'; eng.frequency.value = 55; eng.connect(gain); eng.start();
-    eng2 = ctx.createOscillator(); eng2.type = 'square'; eng2.frequency.value = 110; const g2 = ctx.createGain(); g2.gain.value = .35; eng2.connect(g2); g2.connect(gain); eng2.start(); }
+    filt = ctx.createBiquadFilter(); filt.type = 'lowpass'; filt.frequency.value = 260; filt.Q.value = .4; gain = ctx.createGain(); gain.gain.value = 0; gain.connect(filt); filt.connect(master);
+    eng = ctx.createOscillator(); eng.type = 'sine'; eng.frequency.value = 48; eng.connect(gain); eng.start();
+    eng2 = ctx.createOscillator(); eng2.type = 'triangle'; eng2.frequency.value = 96; const g2 = ctx.createGain(); g2.gain.value = .25; eng2.connect(g2); g2.connect(gain); eng2.start(); }
   return {
-    unlock(){ init(); if(ctx && ctx.state === 'suspended') ctx.resume(); if(hasMusic && on){ bgm.volume = .55; bgm.play().catch(() => {}); } },
-    engine(n, racing){ if(!ctx) return; const f = 50 + n * 150; eng.frequency.setTargetAtTime(f, ctx.currentTime, .05); eng2.frequency.setTargetAtTime(f * 2, ctx.currentTime, .05); gain.gain.setTargetAtTime(racing ? .035 + n * .04 : 0, ctx.currentTime, .1); filt.frequency.setTargetAtTime(400 + n * 1400, ctx.currentTime, .1); },
-    beep(f, t){ if(!ctx || !on) return; const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'square'; o.frequency.value = f; g.gain.value = .06; o.connect(g); g.connect(master); o.start(); g.gain.setTargetAtTime(0, ctx.currentTime + t, .02); o.stop(ctx.currentTime + t + .1); },
-    whoosh(){ if(!ctx || !on) return; const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sawtooth'; o.frequency.setValueAtTime(200, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(900, ctx.currentTime + .25); g.gain.value = .05; o.connect(g); g.connect(master); o.start(); g.gain.setTargetAtTime(0, ctx.currentTime + .2, .05); o.stop(ctx.currentTime + .5); },
-    thud(){ if(!ctx || !on) return; const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'triangle'; o.frequency.setValueAtTime(90, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + .15); g.gain.value = .12; o.connect(g); g.connect(master); o.start(); g.gain.setTargetAtTime(0, ctx.currentTime + .05, .05); o.stop(ctx.currentTime + .3); },
+    unlock(){ init(); if(ctx && ctx.state === 'suspended') ctx.resume(); if(hasMusic && on){ bgm.volume = .5; bgm.play().catch(() => {}); } },
+    engine(n, racing){ if(!ctx) return; const f = 44 + n * 70; eng.frequency.setTargetAtTime(f, ctx.currentTime, .12); eng2.frequency.setTargetAtTime(f * 2, ctx.currentTime, .12); gain.gain.setTargetAtTime(racing ? .008 + n * .012 : 0, ctx.currentTime, .25); filt.frequency.setTargetAtTime(220 + n * 380, ctx.currentTime, .25); },
+    beep(f, t){ if(!ctx || !on) return; const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.value = f; g.gain.value = .035; o.connect(g); g.connect(master); o.start(); g.gain.setTargetAtTime(0, ctx.currentTime + t, .02); o.stop(ctx.currentTime + t + .1); },
+    whoosh(){ if(!ctx || !on) return; const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'triangle'; o.frequency.setValueAtTime(200, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(700, ctx.currentTime + .25); g.gain.value = .02; o.connect(g); g.connect(master); o.start(); g.gain.setTargetAtTime(0, ctx.currentTime + .2, .05); o.stop(ctx.currentTime + .5); },
+    thud(){ if(!ctx || !on) return; const o = ctx.createOscillator(), g = ctx.createGain(); o.type = 'sine'; o.frequency.setValueAtTime(90, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + .15); g.gain.value = .05; o.connect(g); g.connect(master); o.start(); g.gain.setTargetAtTime(0, ctx.currentTime + .05, .05); o.stop(ctx.currentTime + .3); },
     toggle(){ on = !on; if(master) master.gain.setTargetAtTime(on ? 1 : 0, ctx.currentTime, .05); if(hasMusic){ if(on) bgm.play().catch(() => {}); else bgm.pause(); } return on; }
   };
 })();
@@ -703,7 +704,7 @@ document.getElementById('next').addEventListener('click', () => pick(me + 1));
 addEventListener('keydown', e => { if(state !== 'select' || window.__popOpen()) return; if(e.code === 'ArrowLeft' || e.code === 'KeyA') pick(me - 1); if(e.code === 'ArrowRight' || e.code === 'KeyD') pick(me + 1); if(e.code === 'Enter' || e.code === 'Space') startRace(); });
 
 document.getElementById('enter').addEventListener('click', () => {
-  sfx.unlock(); tvVideo.play().catch(() => {});
+  sfx.unlock(); tvVideo.play().catch(() => {}); document.querySelector('#gate video').pause();
   document.getElementById('gate').classList.add('gone'); document.body.classList.add('open', 'selecting');
   state = 'select'; gridUp(); showSel();
 });
@@ -725,11 +726,11 @@ function onFinish(){
   state = 'finish';
   setTimeout(() => {
     const order = ranking(); const p = order.indexOf(karts[me]) + 1;
-    document.getElementById('resTitle').textContent = 'P' + p + (p === 1 ? ' · nobody is surprised' : p === karts.length ? ' · the track won' : ' · noted');
+    document.getElementById('resTitle').textContent = 'P' + p + (p === 1 ? ' · Nobody is surprised' : p === karts.length ? ' · The track won' : ' · Noted');
     document.getElementById('resKick').textContent = 'RESULTS · ' + LAPS + ' LAPS · ' + raceT.toFixed(1) + 's';
     const list = document.getElementById('resList'); list.innerHTML = '';
-    order.forEach((k, i) => { const li = document.createElement('li'); if(k === karts[me]) li.className = 'me'; li.innerHTML = '<i>' + String(i + 1).padStart(2, '0') + '</i><s style="background:#' + k.d.color.toString(16).padStart(6, '0') + '"></s><span>' + k.d.name + '</span><em>' + (k.done ? k.tFin.toFixed(1) + 's' : 'still out there') + '</em>'; list.appendChild(li); });
-    document.getElementById('resQuote').textContent = order[0].d.name.toLowerCase() + ': ' + order[0].d.quote;
+    order.forEach((k, i) => { const li = document.createElement('li'); if(k === karts[me]) li.className = 'me'; li.innerHTML = '<i>' + String(i + 1).padStart(2, '0') + '</i><s style="background:#' + k.d.color.toString(16).padStart(6, '0') + '"></s><span>' + k.d.name + '</span><em>' + (k.done ? k.tFin.toFixed(1) + 's' : 'Still out there') + '</em>'; list.appendChild(li); });
+    document.getElementById('resQuote').textContent = order[0].d.name + ': ' + order[0].d.quote;
     document.getElementById('res').classList.add('on'); state = 'results';
   }, 1400);
 }
