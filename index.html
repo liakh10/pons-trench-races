@@ -27,21 +27,19 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 
 #gl{position:fixed;inset:0;z-index:0;width:100%;height:100%}
 
-/* ---------- gate ---------- */
-#gate{position:fixed;inset:0;z-index:100;overflow:hidden;background:#0d1117;transition:opacity .9s,visibility .9s}
-#gate.gone{opacity:0;visibility:hidden;pointer-events:none}
-#gate .bg{position:absolute;inset:-3%;background:url(assets/bg-track.webp) center/cover;transform:scale(1.03)}
-#gate .grade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,23,.1),rgba(13,17,23,0) 40%,rgba(13,17,23,.82))}
-#gate .card{position:absolute;left:var(--pad);right:var(--pad);bottom:calc(var(--pad) + 10px);display:grid;justify-items:start;gap:14px;color:#fff}
-#gate .kick{font-size:11px;letter-spacing:.34em;color:var(--mint-2)}
-#gate h1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,7vw,96px);line-height:.92;letter-spacing:-.01em;color:#fff;text-shadow:0 4px 0 rgba(0,0,0,.25),0 20px 50px rgba(0,0,0,.4)}
-#gate h1 em{font-style:normal;color:var(--mint-2)}
-#gate p{font-size:clamp(12px,1.3vw,15px);line-height:1.55;color:rgba(255,255,255,.85);white-space:pre-line}
-#gate .go{margin-top:6px;font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.22em;padding:16px 34px;border-radius:999px;color:var(--slate);
-  background:linear-gradient(110deg,var(--mint-2),#fff,var(--pink),#fff,var(--mint-2));background-size:400% 100%;animation:rb 5s linear infinite;
-  box-shadow:0 10px 24px rgba(56,224,168,.35);transition:transform .16s}
-#gate .go:hover{transform:translateY(-2px) scale(1.02)}
-@keyframes rb{to{background-position:400% 0}}
+
+/* ---------- sound prompt ---------- */
+.snd{position:fixed;left:50%;top:calc(var(--pad) + 4px);z-index:40;translate:-50% 0;display:flex;align-items:center;gap:12px;padding:9px 20px 9px 10px;border-radius:999px;
+  background:var(--slate);color:#fff;box-shadow:0 16px 34px rgba(26,34,48,.32);cursor:pointer;opacity:0;transform:translateY(-16px);
+  transition:opacity .5s .5s,transform .5s .5s;font-family:var(--disp);font-weight:700;letter-spacing:.14em;font-size:13px;line-height:1.1;text-align:left;user-select:none}
+body.open .snd{opacity:1;transform:none}
+.snd.gone{opacity:0;transform:translateY(-16px);pointer-events:none;transition-delay:0s}
+.snd i{position:relative;flex:none;width:36px;height:36px;border-radius:50%;background:var(--mint);display:grid;place-items:center;color:var(--slate)}
+.snd i svg{width:18px;height:18px}
+.snd i::after{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--mint);animation:ping 1.7s ease-out infinite}
+@keyframes ping{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.6);opacity:0}}
+.snd small{display:block;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.2em;color:var(--mint-2);margin-top:3px}
+.snd:hover{transform:translateY(-2px)}
 
 /* ---------- HUD ---------- */
 .hud{position:fixed;z-index:20;opacity:0;transition:opacity .8s .3s;pointer-events:none}
@@ -174,7 +172,8 @@ body.racing.coarse .touch{display:flex}
   .board .sign b{width:100%;font-size:clamp(9px,2.75vw,13px);letter-spacing:0}
   .board .sign .copy{width:100%;text-align:center}
   .board .post{display:none}
-  .sel .top{top:calc(var(--pad) + 54px)}
+  .sel .top{top:calc(var(--pad) + 66px)}
+  .snd{top:calc(var(--pad) + 52px);padding:8px 16px 8px 9px;font-size:12px}
   .sel .pick{bottom:calc(var(--pad) + 196px);gap:8px}
   .sel .quote{font-size:11px;max-width:34ch}
   .sel .hint{display:none}
@@ -262,17 +261,7 @@ One track that does not know who they are</p>
   <button class="key n" id="lbn">&#8250;</button>
 </div>
 
-<div id="gate">
-  <div class="bg"></div>
-  <div class="grade"></div>
-  <div class="card">
-    <div class="kick">$PTR · ROBINHOOD CHAIN</div>
-    <h1>PONS TRENCH <em>RACES</em></h1>
-    <p data-tagline>Four guys who never lost at anything
-One track that does not know who they are</p>
-    <button class="go" id="enter">CLICK TO ENTER</button>
-  </div>
-</div>
+<button class="snd" id="sndPrompt"><i><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4 9v6h4l5 4V5L8 9H4z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg></i><span>SOUND ON<small>The grid is quiet until you tap</small></span></button>
 
 <audio id="bgm" src="assets/music.mp3" loop preload="none"></audio>
 
@@ -765,11 +754,13 @@ document.getElementById('prev').addEventListener('click', () => pick(me - 1));
 document.getElementById('next').addEventListener('click', () => pick(me + 1));
 addEventListener('keydown', e => { if(state !== 'select' || window.__popOpen()) return; if(e.code === 'ArrowLeft' || e.code === 'KeyA') pick(me - 1); if(e.code === 'ArrowRight' || e.code === 'KeyD') pick(me + 1); if(e.code === 'Enter' || e.code === 'Space') startRace(); });
 
-document.getElementById('enter').addEventListener('click', () => {
-  sfx.unlock(); tvVideo.play().catch(() => {});
-  document.getElementById('gate').classList.add('gone'); document.body.classList.add('open', 'selecting');
-  state = 'select'; gridUp(); showSel();
-});
+/* straight into the grid, no gate */
+document.body.classList.add('open', 'selecting'); state = 'select'; gridUp(); showSel(); tvVideo.play().catch(() => {});
+const sndPrompt = document.getElementById('sndPrompt'); let armed = false;
+function armAudio(){ if(armed) return; armed = true; sfx.unlock(); sndPrompt.classList.add('gone'); }
+sndPrompt.addEventListener('click', armAudio);
+addEventListener('pointerdown', armAudio, { capture: true });
+addEventListener('keydown', armAudio, { capture: true });
 function startRace(){
   if(state !== 'select') return;
   document.body.classList.remove('selecting'); document.body.classList.add('racing');
