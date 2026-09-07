@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.SITE = { CA: "SOON", X_URL: "https://x.com/ponstrenchraces", NAME: "Pons Trench Races", TICKER: "$PTR" };
+  window.PONS_HOME = "https://www.ponsfamily.com/launchpad";
+  window.DEX_HOME  = "https://dexscreener.com/robinhood";
+</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>$PTR Docs</title>
+<meta name="description" content="Field manual for Pons Trench Races, the toy kart race on Robinhood Chain" />
+<link rel="icon" type="image/png" href="assets/favicon.png" />
+<link rel="apple-touch-icon" href="assets/apple-icon.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --cloud:#f3f7f9; --paper:#ffffff; --fog:#dbe6ee; --slate:#1a2230; --smoke:#5b6a7c;
+  --mint:#38e0a8; --mint-2:#a9f7dd; --mint-3:#0f9b6f; --orange:#ff8a2b; --pink:#ff7ad9; --lime:#cfff3a;
+  --disp:"Fredoka",system-ui,sans-serif; --mono:"DM Mono",ui-monospace,monospace;
+  --pad:clamp(16px,3vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{background:var(--cloud);color:var(--slate);font-family:var(--mono);-webkit-font-smoothing:antialiased;
+  background-image:radial-gradient(circle at 12% 0%,rgba(169,247,221,.55),transparent 42%),radial-gradient(circle at 100% 20%,rgba(255,122,217,.18),transparent 40%);background-attachment:fixed}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px var(--pad);
+  background:rgba(243,247,249,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--fog)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--disp);font-weight:700;font-size:16px}
+.brand img{width:30px;height:30px;border-radius:50%}
+.brand small{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--mint-3);font-weight:400}
+.top nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.key{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:700;font-size:12px;letter-spacing:.14em;padding:9px 15px 9px 12px;border-radius:999px;
+  color:var(--slate);background:#fff;box-shadow:0 6px 16px rgba(26,34,48,.12),inset 0 1px 0 #fff;transition:transform .16s}
+.key:hover{transform:translateY(-2px)}
+.key svg{width:13px;height:13px}
+.key.buy{background:var(--mint)}
+.key.dark{background:var(--slate);color:#fff}
+.key.crumb{background:var(--mint-2);box-shadow:none;cursor:default}
+
+.shell{display:grid;grid-template-columns:250px minmax(0,1fr);gap:clamp(24px,4vw,60px);width:min(1180px,100%);margin:0 auto;padding:36px var(--pad) 90px}
+.side{position:sticky;top:84px;align-self:start;display:flex;flex-direction:column;gap:4px}
+.kick{font-size:10px;letter-spacing:.34em;color:var(--mint-3);font-weight:500;margin-bottom:10px;display:inline-flex;align-items:center;gap:8px}
+.kick::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--mint)}
+.side a{font-family:var(--disp);font-weight:600;font-size:14px;padding:8px 12px;border-radius:999px;color:var(--smoke);transition:background .16s,color .16s}
+.side a:hover{color:var(--slate);background:rgba(255,255,255,.7)}
+.side a.on{color:var(--slate);background:#fff;box-shadow:0 6px 16px rgba(26,34,48,.1)}
+
+.hero{margin-bottom:26px}
+.hero h1{font-family:var(--disp);font-weight:700;font-size:clamp(40px,6vw,72px);line-height:.95;letter-spacing:-.01em;text-shadow:0 2px 0 #fff,0 12px 30px rgba(26,34,48,.14)}
+.hero h1 em{font-style:normal;color:var(--mint-3)}
+.hero p{margin-top:12px;font-size:14px;line-height:1.6;color:var(--smoke);max-width:56ch;white-space:pre-line}
+.sec{background:#fff;border-radius:22px;padding:clamp(20px,3vw,32px);margin-bottom:18px;box-shadow:0 14px 34px rgba(26,34,48,.08);border:1px solid rgba(255,255,255,.9)}
+.sec h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3vw,34px);line-height:1;margin-bottom:14px}
+.sec h2 i{font-style:normal;font-family:var(--mono);font-weight:400;font-size:10px;letter-spacing:.3em;color:var(--mint-3);display:block;margin-bottom:8px}
+.sec p{font-size:13.5px;line-height:1.65;color:#2d3646;max-width:70ch}
+.sec p + p{margin-top:8px}
+.rows{display:grid;margin-top:14px;border-top:1px solid var(--fog)}
+.row{display:grid;grid-template-columns:170px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--fog);font-size:13px;line-height:1.55}
+.row dt{font-size:10px;letter-spacing:.24em;color:var(--smoke);padding-top:3px;font-weight:500}
+.row dd{color:#2d3646}
+.tree{margin-top:12px;font-size:13px;line-height:1.8;color:#2d3646;white-space:pre;overflow-x:auto;padding:12px 14px;background:var(--cloud);border-radius:14px}
+.tree b{color:var(--slate);font-weight:500}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:14px}
+.drv{display:grid;gap:4px;padding:12px 14px;border-radius:14px;background:var(--cloud);font-size:11px;line-height:1.5;color:var(--smoke)}
+.drv b{font-family:var(--disp);font-weight:700;font-size:16px;color:var(--slate);display:flex;align-items:center;gap:8px}
+.drv b s{width:12px;height:12px;border-radius:50%;text-decoration:none;box-shadow:inset 0 0 0 2px rgba(0,0,0,.12)}
+.drv em{font-style:normal;color:var(--slate)}
+.kbd{display:inline-block;font-family:var(--disp);font-weight:700;font-size:11px;padding:2px 8px;border-radius:8px;background:#fff;border:1px solid var(--fog);box-shadow:0 2px 0 var(--fog);margin:0 2px}
+
+.ca{display:inline-flex;align-items:center;gap:12px;max-width:100%;padding:12px 16px;margin-top:14px;background:var(--slate);color:#fff;border-radius:14px 14px 6px 6px;border:3px solid #fff;box-shadow:0 0 0 2px var(--slate)}
+.ca small{font-size:9px;letter-spacing:.32em;color:var(--mint-2);white-space:nowrap}
+.ca b{font-family:var(--disp);font-weight:700;font-size:15px;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ca .copy{display:none;font:inherit;font-family:var(--disp);font-weight:700;font-size:11px;letter-spacing:.18em;padding:7px 12px;border-radius:999px;background:var(--mint);color:var(--slate);border:0;cursor:pointer}
+.ca.live{cursor:pointer;box-shadow:0 0 0 2px var(--slate),0 0 30px rgba(56,224,168,.55)}
+.ca.live .copy{display:inline-block}
+.ca.live b{color:var(--mint-2)}
+.links{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.faq{display:grid;gap:10px;margin-top:12px}
+.faq div{padding:12px 14px;border-radius:14px;background:var(--cloud)}
+.faq b{font-family:var(--disp);font-weight:700;font-size:15px;display:block;margin-bottom:4px}
+.faq span{font-size:13px;line-height:1.6;color:#2d3646}
+.foot{width:min(1180px,100%);margin:0 auto;padding:0 var(--pad) 40px;font-size:10px;letter-spacing:.22em;color:var(--smoke);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media (max-width:820px){
+  .shell{grid-template-columns:1fr;gap:18px;padding-top:20px}
+  .side{position:static;flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:6px;scrollbar-width:none}
+  .side .kick{display:none}
+  .side a{white-space:nowrap;font-size:12px;padding:7px 11px;background:#fff}
+  .row{grid-template-columns:1fr;gap:4px}
+  .top nav .key span{display:none}
+  .top nav .key{padding:9px 11px}
+  .ca{width:100%;flex-wrap:wrap;gap:5px 10px}
+  .ca small{width:100%}
+  .ca b{width:100%;font-size:clamp(9px,2.7vw,13px);letter-spacing:0}
+  .ca .copy{width:100%;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="/"><img src="assets/favicon.png" alt="" /><span>PONS TRENCH RACES</span><small>DOCS</small></a>
+  <nav>
+    <a class="key dark" href="/"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"/></svg><span>RACE</span></a>
+    <a class="key buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg><span>BUY</span></a>
+    <a class="key" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg><span>X</span></a>
+    <span class="key crumb">DOCS</span>
+  </nav>
+</header>
+
+<div class="shell">
+  <aside class="side">
+    <span class="kick">FIELD MANUAL</span>
+    <a href="#what" class="on">What is this</a>
+    <a href="#grid">The grid</a>
+    <a href="#controls">Controls</a>
+    <a href="#race">Race rules</a>
+    <a href="#results">Results</a>
+    <a href="#track">The track</a>
+    <a href="#token">$PTR token</a>
+    <a href="#local">Nothing is stored</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#faq">FAQ</a>
+  </aside>
+
+  <main>
+    <div class="hero">
+      <h1>PONS TRENCH <em>RACES</em> DOCS</h1>
+      <p>Everything about the karts, the drivers, the track and $PTR
+Read it once, then go lose to Cupsey</p>
+    </div>
+
+    <section id="what" class="sec">
+      <h2><i>01 · OVERVIEW</i>What is Pons Trench Races</h2>
+      <p>A toy kart race in the browser. Eight drivers, one pastel circuit with mint neon on the walls, three laps, and a podium that only ever fits one ego at a time.</p>
+      <p>The whole thing runs on a single page with Three.js. Every kart body is the Pons logo, the glossy letter P, laid flat with the driver sitting in the notch. Billboards, flags and the blimp along the track carry Pons and Robinhood Chain marks because that is where the token lives.</p>
+      <div class="rows">
+        <dl class="row"><dt>ENGINE</dt><dd>Three.js 0.171 in one index.html, no build step, no framework</dd></dl>
+        <dl class="row"><dt>PLATFORM</dt><dd>Desktop and mobile browsers with WebGL</dd></dl>
+        <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, token launched through Pons</dd></dl>
+        <dl class="row"><dt>RACE LENGTH</dt><dd>3 laps, roughly one minute against the field</dd></dl>
+      </div>
+    </section>
+
+    <section id="grid" class="sec">
+      <h2><i>02 · DRIVERS</i>The grid</h2>
+      <p>Eight drivers. Four from the poster, four who showed up anyway. Each one has a kart colour, a face, and a top speed label that is honest about how loose the kart is.</p>
+      <div class="grid">
+        <div class="drv"><b><s style="background:#ff8a2b"></s>TRUMP</b><em>Orange · Steady</em>I have the best kart, everybody says so</div>
+        <div class="drv"><b><s style="background:#a9f7dd"></s>MUSK</b><em>Mint · Fast</em>I rewrote the brakes last night, they are optional now</div>
+        <div class="drv"><b><s style="background:#3d8cff"></s>CZ</b><em>Blue · Loose</em>Funds are safu, the tires less so</div>
+        <div class="drv"><b><s style="background:#ff7ad9"></s>TENEV</b><em>Pink · Steady</em>Trading is paused, racing is not</div>
+        <div class="drv"><b><s style="background:#9b7bff"></s>TOLY</b><em>Violet · Fast</em>The track is fast, sometimes the track is down</div>
+        <div class="drv"><b><s style="background:#bfd8ff"></s>VITALIK</b><em>Ice · Loose</em>I drive at a constant rate, it is called proof of stake</div>
+        <div class="drv"><b><s style="background:#ffb703"></s>SAYLOR</b><em>Amber · Steady</em>Not selling this kart, ever, at any price</div>
+        <div class="drv"><b><s style="background:#fff176"></s>CUPSEY</b><em>Sponge · Fast</em>I am a sponge, I absorb the corners</div>
+      </div>
+      <div class="rows">
+        <dl class="row"><dt>LABELS</dt><dd>Fast, Steady and Loose describe the AI top speed of that driver when you race against them. Your own kart always has the same top speed no matter who you pick</dd></dl>
+        <dl class="row"><dt>PICKING</dt><dd>Arrows on screen, or ← → on the keyboard, then RACE or Enter</dd></dl>
+      </div>
+    </section>
+
+    <section id="controls" class="sec">
+      <h2><i>03 · INPUT</i>Controls</h2>
+      <div class="rows">
+        <dl class="row"><dt>THROTTLE</dt><dd><span class="kbd">↑</span> or <span class="kbd">W</span></dd></dl>
+        <dl class="row"><dt>STEER</dt><dd><span class="kbd">←</span> <span class="kbd">→</span> or <span class="kbd">A</span> <span class="kbd">D</span></dd></dl>
+        <dl class="row"><dt>BRAKE</dt><dd><span class="kbd">↓</span> <span class="kbd">S</span> or <span class="kbd">SPACE</span></dd></dl>
+        <dl class="row"><dt>PHONE</dt><dd>Throttle is automatic. Tap and hold the left or right half of the screen to steer. The two round buttons show which side is pressed</dd></dl>
+        <dl class="row"><dt>ESC</dt><dd>Closes the pit wall and the lightbox</dd></dl>
+      </div>
+    </section>
+
+    <section id="race" class="sec">
+      <h2><i>04 · RULES</i>Race rules</h2>
+      <p>Five red lights, then GO. The grid starts a few metres behind the line, so the first crossing is lap one, not a free lap.</p>
+      <div class="tree"><b>race</b>
+├── laps            3, position and lap counter live top right
+├── top speed       40 units per second on the road
+├── boost pads      4 glowing mint pads, +32% speed for 1.3 seconds, only on the middle of the road
+├── off the road    top speed halves and the kart slows fast, get back on the grey
+├── walls           the mint neon walls stop you and eat some speed, sound effect included
+├── contact         karts push each other sideways and trade a little speed
+└── the field       the AI runs close to your pace and closes in when you lead, nobody gets to cruise</div>
+    </section>
+
+    <section id="results" class="sec">
+      <h2><i>05 · PODIUM</i>Results</h2>
+      <p>The race ends when you cross the line on lap three. The others finish on their own and the table fills in as they arrive.</p>
+      <div class="rows">
+        <dl class="row"><dt>POSITION</dt><dd>Ranked by who finished first, then by distance for anyone still out there</dd></dl>
+        <dl class="row"><dt>TIMES</dt><dd>Seconds from GO to the finish line, shown for every driver who made it</dd></dl>
+        <dl class="row"><dt>THE LINE</dt><dd>The winner gets their own quote under the table, so plan for Musk</dd></dl>
+        <dl class="row"><dt>AGAIN</dt><dd>RACE AGAIN restarts with the same driver, PIT LANE goes back to the grid</dd></dl>
+      </div>
+    </section>
+
+    <section id="track" class="sec">
+      <h2><i>06 · SCENERY</i>The track</h2>
+      <p>One closed circuit, twelve corners, white pastel buildings and small round trees. Everything on it is built from primitives in code, nothing is a downloaded model.</p>
+      <div class="tree"><b>trackside</b>
+├── start gantry    five lights, pons and Robinhood Chain plates on the crossbar
+├── jumbotron       plays the race clip on loop next to the first corner
+├── billboards      six of them, pons and Robinhood Chain, alternating sides
+├── monuments       three chrome Pons P statues, slowly turning
+├── flags           28 poles along the walls, Pons P and the Robinhood feather
+├── decals          logos painted on the asphalt at the start and mid track
+└── blimp           one, circling, P on both sides</div>
+    </section>
+
+    <section id="token" class="sec">
+      <h2><i>07 · TOKEN</i>$PTR token</h2>
+      <p>$PTR launches on Robinhood Chain through the Pons launchpad. The contract address lives on the pit board in the game and right here. Until launch both say SOON.</p>
+      <div class="ca" id="ca"><small>CONTRACT</small><b id="caVal">SOON</b><button class="copy" id="caCopy">COPY</button></div>
+      <div class="links">
+        <a class="key buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>BUY ON PONS</a>
+        <a class="key" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
+      </div>
+      <div class="rows">
+        <dl class="row"><dt>CHAIN</dt><dd>Robinhood Chain, EVM, addresses start with 0x</dd></dl>
+        <dl class="row"><dt>LAUNCHPAD</dt><dd>Pons, ponsfamily.com. The BUY button opens the launchpad, and the token page once the address is in</dd></dl>
+        <dl class="row"><dt>CHART</dt><dd>DexScreener on Robinhood Chain, the link comes back to the site together with the contract</dd></dl>
+        <dl class="row"><dt>IN THE GAME</dt><dd>Nothing. Positions, boosts and podiums have no connection to the token. The race is the meme, the token is the token</dd></dl>
+      </div>
+    </section>
+
+    <section id="local" class="sec">
+      <h2><i>08 · PRIVACY</i>Nothing is stored</h2>
+      <p>There is no backend, no account and no leaderboard. The site does not write anything to your browser either. Close the tab and the race never happened, which some drivers prefer.</p>
+      <div class="rows">
+        <dl class="row"><dt>SOUND</dt><dd>Starts on CLICK TO ENTER, SOUND ON / OFF in the corner mutes music and effects together</dd></dl>
+        <dl class="row"><dt>MUSIC</dt><dd>One CC0 track, so it can play here without a credit line</dd></dl>
+        <dl class="row"><dt>REDUCED MOTION</dt><dd>If your system asks for it, the camera stops zooming with speed and the smoke stays off</dd></dl>
+      </div>
+    </section>
+
+    <section id="roadmap" class="sec">
+      <h2><i>09 · NEXT</i>Roadmap</h2>
+      <div class="tree"><b>status</b>
+├── done      the race, eight drivers, the track, the pit wall, this manual
+├── launch    contract address on the pit board, chart link returns
+└── after     more incidents on the pit wall, and more drivers if the grid keeps asking</div>
+    </section>
+
+    <section id="faq" class="sec">
+      <h2><i>10 · FAQ</i>Questions</h2>
+      <div class="faq">
+        <div><b>Why is my kart shaped like a P</b><span>Because it is the Pons logo. Every kart on the grid is the same letter in a different colour, the driver sits in the cut out corner</span></div>
+        <div><b>Can I win</b><span>Yes. Hit the boost pads, stay off the white edges and do not touch the walls. The field stays close on purpose, so a clean last lap decides it</span></div>
+        <div><b>Does it work on a phone</b><span>Yes. Throttle is automatic, steer by holding a side of the screen. The pit board and the buttons move to the bottom</span></div>
+        <div><b>Where is the chart button</b><span>Off the site until the contract is live. It comes back with the address</span></div>
+        <div><b>Who made the drivers</b><span>They are toy versions built from spheres and boxes, with faces drawn in code. Nobody was scanned</span></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="foot"><span>PONS TRENCH RACES · $PTR</span><span>ROBINHOOD CHAIN · PONS</span></footer>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-pons" viewBox="0 0 64 64"><path d="M14 8h24c11 0 18 7 18 17s-7 17-18 17h-9v12a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3V11a3 3 0 0 1 3-3z" fill="currentColor"/><path d="M29 20h8c4 0 6.5 2 6.5 5s-2.5 5-6.5 5h-8z" fill="#fff" opacity=".9"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="currentColor" d="M18.9 2H22l-7.1 8.1L23 22h-6.6l-5.2-6.8L5.3 22H2.1l7.6-8.7L1.5 2h6.7l4.7 6.2L18.9 2zm-1.1 18h1.8L7.3 3.9H5.4L17.8 20z"/></symbol>
+</svg>
+
+<script>
+(function(){
+  var S = window.SITE, CA = (S.CA||"SOON").trim(), HAS_CA = CA !== "SOON" && CA !== "";
+  document.querySelectorAll('[data-link="pons"]').forEach(function(a){ a.href = HAS_CA ? window.PONS_HOME + '/' + CA : window.PONS_HOME; a.target='_blank'; a.rel='noopener'; });
+  document.querySelectorAll('[data-link="x"]').forEach(function(a){ a.href = S.X_URL || 'https://x.com'; a.target='_blank'; a.rel='noopener'; });
+  var caBox = document.getElementById('ca'), caVal = document.getElementById('caVal'), caCopy = document.getElementById('caCopy');
+  caVal.textContent = HAS_CA ? CA : 'SOON';
+  if(HAS_CA){
+    caBox.classList.add('live'); caBox.title = CA;
+    caBox.addEventListener('click', function(e){ e.stopPropagation(); if(navigator.clipboard) navigator.clipboard.writeText(CA); var old = caCopy.textContent; caCopy.textContent = 'COPIED'; setTimeout(function(){ caCopy.textContent = old; }, 1100); });
+  }
+  /* scrollspy */
+  var links = [].slice.call(document.querySelectorAll('.side a')), secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  function spy(){
+    var y = window.scrollY + 120, cur = 0;
+    secs.forEach(function(s, i){ if(s && s.offsetTop <= y) cur = i; });
+    links.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  }
+  addEventListener('scroll', spy, { passive: true }); spy();
+})();
+</script>
+</body>
+</html>
