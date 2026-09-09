@@ -186,6 +186,8 @@ body.racing.coarse .touch{display:flex}
   .pop .tv{margin:12px 14px 0}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+
+.pmark{width:15px;height:15px;min-width:15px;object-fit:contain;display:inline-block;border:0 !important;border-radius:0 !important}
 </style>
 </head>
 <body>
@@ -202,7 +204,7 @@ body.racing.coarse .touch{display:flex}
 </div>
 
 <nav class="hud rail">
-  <a class="key buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><svg><use href="#i-pons"/></svg>BUY</a>
+  <a class="key buy" data-link="pons" href="https://www.ponsfamily.com/launchpad"><img class="pmark" src="assets/pons-mark.png" alt="" />BUY</a>
   <a class="key" data-link="x" href="https://x.com"><svg><use href="#i-x"/></svg>X</a>
   <a class="key" href="/docs">DOCS</a>
 </nav>
